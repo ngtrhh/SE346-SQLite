@@ -22,6 +22,12 @@ const LoginScreen = ({navigation}) => {
       const db = await connectToDatabase();
       const result = await login(db, username, password);
       if (result) navigation.replace('ClassScreen');
+      else {
+        alert('Username and password are incorrect');
+        setUsername('');
+        setPassword('');
+        return;
+      }
     } catch (error) {
       console.error(error);
     }
